@@ -4,6 +4,8 @@ This project implements a **digital clock with an adjustable time and alarm** on
 
 The design shows the current time in `HH:MM:SS` on the 7‑segment displays, supports user time adjustment, and includes a configurable alarm with visual indication on the LEDs.
 
+---
+
 ## Features
 
 - **Real-time clock**
@@ -26,25 +28,34 @@ The design shows the current time in `HH:MM:SS` on the 7‑segment displays, sup
   - Edge-detected (debounced) increment button to avoid multiple counts per press.
   - Synchronous, single-clock design following clean `_Q` / `_D` register style.
 
+---
+
 ## Hardware
 
 - Board: **Terasic DE10-Lite (Intel MAX10 FPGA)**
 - Clock: 50 MHz oscillator (`MAX10_CLK1_50`)
-- Inputs:
-  - `SW[0]–SW[2]`: select seconds / minutes / hours for adjustment
-  - `SW[3]`: alarm set mode (show & edit alarm time)
-  - `SW[9]`: tick speed select (normal vs fast, for testing)
-  - `KEY[1]`: reset (active low)
-  - `KEY[0]`: increment / clear alarm (active low)
-- Outputs:
-  - `HEX0–HEX5`: 7-segment displays for HH:MM:SS
-  - `LEDR[9:0]`: blinking LEDs when alarm is active
+
+**Inputs**
+
+- `SW[0]–SW[2]` – select seconds / minutes / hours for adjustment  
+- `SW[3]` – alarm set mode (show & edit alarm time)  
+- `SW[9]` – tick speed select (normal vs fast, for testing)  
+- `KEY[1]` – reset (active low)  
+- `KEY[0]` – increment / clear alarm (active low)  
+
+**Outputs**
+
+- `HEX0–HEX5` – 7-segment displays for HH:MM:SS  
+- `LEDR[9:0]` – blinking LEDs when alarm is active  
+
+---
 
 ## File Structure
 
 ```text
 src/
-  DE10_12_3.v   # Top-level module with clock, time adjust, and alarm logic
-  Seg.v         # 7-segment display decoder (hex to segments)
+  DE10_12_3.v       # Top-level module with clock, time adjust, and alarm logic
+  Seg.v             # 7-segment display decoder (hex to segments)
 
-docs/           # Presintation 
+docs/
+  Presentation.pdf  # Project overview and design summary (slides)
